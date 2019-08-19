@@ -1,4 +1,5 @@
 # FindCouple
+This is a training Angular project. A simple game find couple.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
