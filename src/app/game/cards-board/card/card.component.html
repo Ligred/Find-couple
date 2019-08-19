@@ -1,0 +1,18 @@
+<!--<div class="container" #container>-->
+<!--  <div class="cover" *ngIf="!clicked else img"><p>?</p></div>-->
+<!--  <ng-template #img>-->
+<!--    <div class="image">-->
+<!--      <img [src]="card.image" [alt]="card.name" width="100%">-->
+<!--    </div>-->
+<!--  </ng-template>-->
+<!--</div>-->
+<div class="flip-card">
+  <div class="flip-card-inner" [ngClass]="{'flip-card-inner-rotate': clicked}">
+    <div class="flip-card-front">
+      ?
+    </div>
+    <div class="flip-card-back">
+      <img [src]="card.image" [alt]="card.name" width="100%">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.container {
+  background: transparent;
+  .board {
+    width: 38em;
+    margin: 0 auto;
+    padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    p {
+      color: #FDC30B;
+      font-size: 7em;
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="board" *ngIf="!winMode else win">
+    <app-card *ngFor="let card of sortedCards" [card]="card" (click)="onClickCard(card)"></app-card>
+  </div>
+  <ng-template #win>
+    <div class="board">
+      <img src="../../../assets/images/win.png" alt="Winner" width=60%>
+      <p>Молодець!!!</p>
+    </div>
+  </ng-template>
+</div>
