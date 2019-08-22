@@ -1,26 +1,24 @@
+@import 'colors';
+%shared-dimensions {
+  display: inline-block;
+  min-width: 35%;
+  padding: 5px;
+  font-weight: 700;
+}
 .age-container {
   text-align: center;
-  %shared-dimensions {
-    display: inline-block;
-    min-width: 35%;
-    padding: 5px;
-    font-weight: 700;
-  }
-  h1 {
+  .caption {
     @extend  %shared-dimensions;
-    color: #5415b7;
+    color: $violet;
     margin: 40px auto;
     text-decoration: underline;
   }
-  div {
-    text-align: center;
-    span {
-      @extend %shared-dimensions;
-      margin: 10px;
-      font-size: 2.5em;
-      border: 2px solid;
-      border-radius: 50%;
-      cursor: pointer;
-    }
+  .age-item {
+    @extend %shared-dimensions;
+    margin: 10px;
+    font-size: 2.5em;
+    border: 2px solid;
+    border-radius: 50%;
+    cursor: pointer;
   }
 }

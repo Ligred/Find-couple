@@ -1,16 +1,16 @@
 <nav>
   <div class="backwards-wrapper" *ngIf="settings.age">
-    <a (click)="backNav()">
+    <a class="link" (click)="backNav()">
       <img src="../../../assets/images/backwards-arrow_smile.png" alt="backwards button" width="100">
     </a>
   </div>
   <div class="nav-wrapper">
-    <a class="age" [routerLink]="['./age']">{{settings.age}} </a>
-    <a class="theme" [routerLink]="['./theme']">{{settings.theme}} </a>
-    <a class="reset" *ngIf="settings.isGameBoard" (click)="onReset()"> Розпочати заново</a>
+    <a class="age link" [routerLink]="['./age']">{{settings.age}} </a>
+    <a class="theme link" [routerLink]="['./theme']">{{settings.theme}} </a>
+    <a class="reset link" *ngIf="settings.isGameBoard" (click)="onReset()"> Розпочати заново</a>
   </div>
   <div class="cancel-wrapper" *ngIf="settings.age">
-    <a [routerLink]="['/']">
+    <a class="link" [routerLink]="['/']">
       <img src="../../../assets/images/cancel.png" alt="cancel button" width="50">
     </a>
   </div>

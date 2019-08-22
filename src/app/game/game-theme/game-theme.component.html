@@ -1,10 +1,10 @@
 <div class="theme-container">
-  <h1>Вибери тему)</h1>
+  <h1 class="caption">Вибери тему)</h1>
   <div class="search">
-    <input type="text" placeholder="Знайти тему..." [(ngModel)]="searchQuery">
+    <input class="search-input" type="text" placeholder="Знайти тему..." [(ngModel)]="searchQuery">
   </div>
   <div class="themes">
-    <div class="image-container" *ngFor="let theme of themes | themeFilter: searchQuery" (click)="onChoseTheme(theme)">
+    <div class="themes-container" *ngFor="let theme of themes | themeFilter: searchQuery" (click)="onChoseTheme(theme)">
       <figure>
         <img [src]="theme.image" [alt]="theme.name" width="100%">
         <figcaption>{{theme.description}}</figcaption>

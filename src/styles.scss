@@ -2,15 +2,18 @@
   font-family: conquettec;
   src: url(assets/fonts/CoquetteC.ttf) format("opentype");
 }
-body {
-  margin: 0;
-  padding: 0;
+html {
   font-family: conquettec, Arial, sans-serif;
   font-size: 14px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 }
+
 

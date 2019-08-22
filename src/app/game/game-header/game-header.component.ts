@@ -25,10 +25,10 @@ export class GameHeaderComponent implements OnInit, OnDestroy {
     this.settingsSubscriber.unsubscribe();
   }
 
-  onReset() {
+  onReset(): void {
     this.gameService.resetObservable.next();
   }
-  backNav() {
+  backNav(): void {
     this.location.back();
   }
 

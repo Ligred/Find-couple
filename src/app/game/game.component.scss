@@ -1,11 +1,9 @@
-.container {
-  .back {
-    background-image: url("../../assets/images/theme-images/fruit-background.jpg");
-    position: absolute;
-    min-height: 100%;
-    width: 100%;
-    z-index: -1;
-    opacity: .2;
-  }
+.back {
+  background-image: url("../../assets/images/theme-images/fruit-background.jpg");
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .2;
 }
 

@@ -1,26 +1,32 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { Card } from '../../../shared/card';
-import { GameService } from '../../../game.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit, OnDestroy {
+export class CardComponent implements OnInit, OnChanges {
   private clicked: boolean;
-  private  cardClickSubscription: Subscription;
   @Input() card: Card;
-  constructor(private gameService: GameService) { }
+  @Input() coupleCards: Card[];
+  @Input() activeCards: Card[];
+  @Output() clickCard = new EventEmitter<Card>();
+  constructor() { }
 
   ngOnInit() {
     this.clicked = false;
-    this.cardClickSubscription = this.gameService.cardClickObservable.subscribe((data) => {
-      this.clicked = data.id === this.card.id ? data.clicked : this.clicked;
-    });
   }
-  ngOnDestroy(): void {
-    this.cardClickSubscription.unsubscribe();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (![...this.coupleCards, ...this.activeCards].find(i => i.id === this.card.id)) {
+      this.clicked = false;
+    }
+  }
+  onClick() {
+    this.clickCard.emit(this.card);
+    if (this.coupleCards.length === 2) {
+      return false;
+    }
+    this.clicked = true;
   }
 }

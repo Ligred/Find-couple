@@ -1,16 +1,19 @@
+@import 'colors';
 .container {
   background: transparent;
   .board {
-    width: 38em;
+    width: 38rem;
     margin: 0 auto;
     padding-top: 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    p {
-      color: #FDC30B;
-      font-size: 7em;
+    .success {
+      margin-top: 10px;
+      color: $orange_color;
+      font-family: conquettec, Arial, sans-serif;
+      font-size: 7rem;
       font-weight: 700;
     }
   }

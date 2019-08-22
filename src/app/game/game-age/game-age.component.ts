@@ -19,7 +19,7 @@ export class GameAgeComponent implements OnInit {
     this.gameService.settingsObservable.next(new GameSettings());
     this.ages = this.gameService.getAges();
   }
-  onPickAge(age: Age) {
+  onPickAge(age: Age): void {
     this.gameService.settingsObservable.next(new GameSettings(age.age, age.difficulty));
     this.router.navigate(['../theme'], {relativeTo: this.route});
   }

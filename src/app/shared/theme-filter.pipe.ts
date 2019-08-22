@@ -7,7 +7,7 @@ import { Theme } from './theme';
 export class ThemeFilterPipe implements PipeTransform {
 
   transform(value: Theme[], str: string): Theme[] {
-    if (str === undefined || str === '') {
+    if (!str) {
       return value;
     }
     return value.filter(theme => {
