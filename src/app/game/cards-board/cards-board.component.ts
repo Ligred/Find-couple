@@ -52,7 +52,7 @@ export class CardsBoardComponent implements OnInit, OnDestroy {
     const filteredCards = this.getFilteredCards(this.cards);
     const duplicatedCards = this.duplicate(filteredCards);
     this.sortedCards = duplicatedCards.sort(() => {
-      return Math.random() * 2 - 1;
+      return Math.random() - 0.5;
     });
   }
   private getFilteredCards(cards: Card[]): Card[] {
@@ -60,7 +60,7 @@ export class CardsBoardComponent implements OnInit, OnDestroy {
       return card.theme.description === this.settings.theme;
     }).slice(0, this.settings.difficulty);
   }
-  private onClickCard(card: Card): void | boolean {
+  private onClickCard(card: Card): void {
     if (!this.coupleCards.length || this.coupleCards[0].id !== card.id) {
       this.coupleCards = [...this.coupleCards, card];
     }
