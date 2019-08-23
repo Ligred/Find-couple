@@ -1,0 +1,68 @@
+{
+  "themes": [
+    {
+      "id": 1,
+      "name": "fruit",
+      "description": "Фрукти"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "theme": "fruit",
+      "name": "apple"
+    },
+    {
+      "id": 2,
+      "theme": "fruit",
+      "name": "avocado"
+    },
+    {
+      "id": 3,
+      "theme": "fruit",
+      "name": "banana"
+    },
+    {
+      "id": 4,
+      "theme": "fruit",
+      "name": "blueberries"
+    },
+    {
+      "id": 5,
+      "theme": "fruit",
+      "name": "lemon"
+    },
+    {
+      "id": 6,
+      "theme": "fruit",
+      "name": "pear"
+    },
+    {
+      "id": 7,
+      "theme": "fruit",
+      "name": "pineapple"
+    },
+    {
+      "id": 8,
+      "theme": "fruit",
+      "name": "raspberry"
+    }
+  ],
+  "ages": [
+    {
+      "age": "3-4 років",
+      "color": "#ff2480",
+      "difficulty": 4
+    },
+    {
+      "age": "4-5 років",
+      "color": "#ff9d2a",
+      "difficulty": 6
+    },
+    {
+      "age": "5-6 років",
+      "color": "#00d36f",
+      "difficulty": 8
+    }
+  ]
+}

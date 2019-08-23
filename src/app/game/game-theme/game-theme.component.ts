@@ -15,20 +15,27 @@ export class GameThemeComponent implements OnInit, OnDestroy {
   private settings: GameSettings;
   private settingSubscription: Subscription;
   private searchQuery: string;
+  private loading = false;
   constructor(private gameService: GameService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.themes = this.gameService.getThemes();
+    this.getThemes();
     this.settingSubscription = this.gameService.settingsObservable.subscribe(value => this.settings = value);
   }
   ngOnDestroy(): void {
     this.settingSubscription.unsubscribe();
   }
-
-  onChoseTheme(theme: Theme) {
-    this.gameService.settingsObservable.next(new GameSettings(this.settings.age, this.settings.difficulty, theme.description));
+  private  getThemes(): void {
+    this.loading = true;
+    this.gameService.getThemes().subscribe(data => {
+      this.themes = data;
+      this.loading = false;
+    });
+  }
+  private onChoseTheme(theme: Theme): void {
+    this.gameService.settingsObservable.next(new GameSettings(this.settings.age, this.settings.difficulty, theme.description, theme.name));
     this.router.navigate(['../board'], {relativeTo: this.route});
   }
 }

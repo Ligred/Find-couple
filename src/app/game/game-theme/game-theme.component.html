@@ -1,4 +1,4 @@
-<div class="theme-container">
+<div class="theme-container" *ngIf="!loading">
   <h1 class="caption">Вибери тему)</h1>
   <div class="search">
     <input class="search-input" type="text" placeholder="Знайти тему..." [(ngModel)]="searchQuery">
@@ -11,4 +11,7 @@
       </figure>
     </div>
   </div>
+</div>
+<div class="spinner" *ngIf="loading">
+  <app-spiner></app-spiner>
 </div>

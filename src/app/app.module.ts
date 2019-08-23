@@ -12,6 +12,8 @@ import { GameThemeComponent } from './game/game-theme/game-theme.component';
 import { HoverColorsDirective } from './shared/hover-colors.directive';
 import { ThemeFilterPipe } from './shared/theme-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SpinerComponent } from './shared/spiner/spiner.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { FormsModule } from '@angular/forms';
     GameAgeComponent,
     GameThemeComponent,
     HoverColorsDirective,
-    ThemeFilterPipe
+    ThemeFilterPipe,
+    SpinerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

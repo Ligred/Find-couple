@@ -1,6 +1,10 @@
-<div class="age-container">
+<div class="age-container" *ngIf="!loading">
   <h1 class="caption">Скільки тобі років?</h1>
   <div class="age-wrapper" *ngFor="let age of ages" (click)="onPickAge(age)">
     <span class="age-item" [appHoverColors]="{color: age.color, bgColor: 'white'}">{{age.age}}</span>
   </div>
 </div>
+<div class="spinner" *ngIf="loading">
+  <app-spiner></app-spiner>
+</div>
+

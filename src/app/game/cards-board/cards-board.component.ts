@@ -16,6 +16,7 @@ export class CardsBoardComponent implements OnInit, OnDestroy {
   private activeCards: Card[] = [];
   private coupleCards: Card[] = [];
   private winMode = false;
+  private loading = false;
   private settings: GameSettings;
   private subscriptions: Subscription[] = [];
   constructor(private gameService: GameService) { }
@@ -24,13 +25,12 @@ export class CardsBoardComponent implements OnInit, OnDestroy {
     const settingSubscription = this.gameService.settingsObservable.subscribe(value => this.settings = value);
     this.subscriptions.push(settingSubscription);
     this.gameService.settingsObservable
-      .next(new GameSettings(this.settings.age, this.settings.difficulty, this.settings.theme, true));
+      .next(new GameSettings(this.settings.age, this.settings.difficulty, this.settings.themeDescription, this.settings.themeName, true));
     this.getCards();
-    this.randomSort();
     const resetSubscription = this.gameService.resetObservable.subscribe(() => {
       this.activeCards = [];
       this.coupleCards = [];
-      this.getCards();
+      this.randomSort();
       this.winMode = false;
     });
     this.subscriptions.push(resetSubscription);
@@ -39,12 +39,19 @@ export class CardsBoardComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
   private getCards(): void {
-    this.cards = this.gameService.getCards();
+    this.loading = true;
+    this.gameService.getCards().subscribe(cards => {
+      this.cards = cards;
+      this.randomSort();
+      this.loading = false;
+    });
   }
   private duplicate(cards: Card[]): Card[] {
     return [].concat(cards, cards).map((el, i) => {
+      const image = el.image;
       const card = {...el};
       card.id = i + 1;
+      card.image = image;
       return card;
     });
   }
@@ -57,7 +64,7 @@ export class CardsBoardComponent implements OnInit, OnDestroy {
   }
   private getFilteredCards(cards: Card[]): Card[] {
     return cards.filter((card: Card) => {
-      return card.theme.description === this.settings.theme;
+      return card.theme === this.settings.themeName;
     }).slice(0, this.settings.difficulty);
   }
   private onClickCard(card: Card): void {
@@ -76,7 +83,7 @@ export class CardsBoardComponent implements OnInit, OnDestroy {
       this.activeCards = [...this.activeCards, ...this.coupleCards];
       this.coupleCards = [];
     } else if (this.coupleCards.length === 2 && this.coupleCards[0].name !== this.coupleCards[1].name) {
-      setTimeout(() => this.coupleCards = [], 1000);
+      setTimeout(() => this.coupleCards = [], 700);
     }
   }
 }

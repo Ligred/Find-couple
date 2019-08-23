@@ -18,7 +18,7 @@ export class NavigationGuard implements CanActivate {
     this.path = route.routeConfig.path;
     if (this.settings.age && this.path === 'theme') {
       return true;
-    } else if (this.settings.theme && this.path === 'board') {
+    } else if (this.settings.themeName && this.path === 'board') {
       return  true;
     } else {
       this.router.navigate(['/']);

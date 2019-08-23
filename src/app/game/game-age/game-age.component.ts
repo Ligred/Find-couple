@@ -11,16 +11,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class GameAgeComponent implements OnInit {
   private ages: Age[];
+  private loading = false;
   constructor(private gameService: GameService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.gameService.settingsObservable.next(new GameSettings());
-    this.ages = this.gameService.getAges();
+    this.getAge();
   }
-  onPickAge(age: Age): void {
+  private onPickAge(age: Age): void {
     this.gameService.settingsObservable.next(new GameSettings(age.age, age.difficulty));
     this.router.navigate(['../theme'], {relativeTo: this.route});
+  }
+  private getAge(): void {
+    this.loading = true;
+    this.gameService.getAges().subscribe(data => {
+      this.ages = data;
+      this.loading = false;
+    });
   }
 }
